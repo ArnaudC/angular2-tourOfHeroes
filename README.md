@@ -1,3 +1,3 @@
-* Installation instructions
+'' Installation instructions
 npm i
 npm start
