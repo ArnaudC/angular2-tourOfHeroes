@@ -7,7 +7,7 @@ It also shows heroes born at the same year.
 
 ### Tech
 * [AngularJS2] - HTML enhanced for web apps!
-* TypeScript
+* [TypeScript]
 
 ### Installation
 Tour of heroes requires [Node.js](https://nodejs.org/) v4+ to run.
