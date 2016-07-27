@@ -27,14 +27,14 @@ export class HeroService {
             then(heroes => heroes.find(hero => hero.id === id));
     }
 
-    // getHeroesSameYear(hero: Hero) {
-    //     return this.getHeroes().
-    //         then(heroes => heroes
-    //             .filter(h =>
-    //                 hero != h && (
-    //                     (!!hero.birthday && !!h.birthday) ? (h.birthday.getFullYear() === hero.birthday.getFullYear()) : false ||
-    //                         (!hero.birthday && !h.birthday) ? true : false
-    //                 )
-    //             ));
-    // }
+    getHeroesSameYear(hero: Hero) {
+        return this.getHeroes().
+            then(heroes => heroes
+                .filter(h =>
+                    hero != h && (
+                        (!!hero.birthday && !!h.birthday) ? (h.birthday.getFullYear() === hero.birthday.getFullYear()) : false ||
+                            (!hero.birthday && !h.birthday) ? true : false
+                    )
+                ));
+    }
 }

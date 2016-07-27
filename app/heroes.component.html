@@ -11,7 +11,7 @@
   </h2>
   <button (click)="gotoDetail()">View Details</button>
 </div>
-<h2 *ngIf="heroesSameYear">Heroes born the same year :</h2>
+<h2 *ngIf="heroesSameYear">Heroes born the same year</h2>
 <ul class="heroes">
   <li *ngFor="let heroSameYear of heroesSameYear" [class.selected]="heroSameYear === selectedHero" (click)="onSelect(heroSameYear)">
     <span class="badge">{{heroSameYear.id}}</span> {{heroSameYear.name}}

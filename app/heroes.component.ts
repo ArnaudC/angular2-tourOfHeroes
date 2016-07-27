@@ -21,7 +21,8 @@ export class HeroesComponent implements OnInit {
 
   onSelect(hero: Hero) {
     this.selectedHero = hero;
-    // this.heroService.getHeroesSameYear(hero).then(heroesSameYear => this.heroesSameYear = heroesSameYear);
+    this.heroService.getHeroesSameYear(hero).
+      then(heroesSameYear => heroesSameYear.length >= 1 ? this.heroesSameYear = heroesSameYear : this.heroesSameYear = null);
   }
 
   gotoDetail() {
