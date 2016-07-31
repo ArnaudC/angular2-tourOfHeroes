@@ -3,12 +3,13 @@ import {Router} from '@angular/router';
 import { OnInit } from '@angular/core';
 import {Hero} from './hero';
 import {HeroService} from './hero.service';
+import { HeroDetailComponent } from './hero-detail.component';
 
 @Component({
   selector: 'my-heroes',
   templateUrl: 'app/heroes.component.html',
   styleUrls: ['app/heroes.component.css'],
-  directives: [],
+  directives: [HeroDetailComponent],
   providers: []
 })
 
@@ -21,8 +22,8 @@ export class HeroesComponent implements OnInit {
 
   onSelect(hero: Hero) {
     this.selectedHero = hero;
-    this.heroService.getHeroesSameYear(hero).
-      then(heroesSameYear => heroesSameYear.length >= 1 ? this.heroesSameYear = heroesSameYear : this.heroesSameYear = null);
+    // this.heroService.getHeroesSameYear(hero).
+    //   then(heroesSameYear => heroesSameYear.length >= 1 ? this.heroesSameYear = heroesSameYear : this.heroesSameYear = null);
   }
 
   gotoDetail() {
@@ -36,5 +37,32 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit() {
     this.getHeroes();
+  }
+
+  // addHero() {
+  //   let newHero = this.heroService
+  //     .save(new Hero())
+  //     .then(hero => this.heroes.push(hero));
+  // }
+
+  addHero() {
+    this.addingHero = true;
+    this.selectedHero = null;
+  }
+
+  close(savedHero: Hero) {
+    this.addingHero = false;
+    if (savedHero) { this.getHeroes(); }
+  }
+
+  deleteHero(hero, $event) {
+    event.stopPropagation();
+    this.heroService.delete(hero)
+      .then(response => {
+        this.heroes = this.heroes.filter(h => h.id != hero.id);
+        if (this.selectedHero == hero) {
+          this.selectedHero = null;
+        }
+      })
   }
 }

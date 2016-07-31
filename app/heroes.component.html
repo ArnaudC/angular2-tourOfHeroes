@@ -3,6 +3,7 @@
 <ul class="heroes">
   <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
     <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <button class="delete-button" (click)="deleteHero(hero, $event)">Delete</button>
   </li>
 </ul>
 <div *ngIf="selectedHero">
@@ -14,7 +15,11 @@
 <h2 *ngIf="heroesSameYear">Heroes born the same year</h2>
 <ul class="heroes">
   <li *ngFor="let heroSameYear of heroesSameYear" [class.selected]="heroSameYear === selectedHero" (click)="onSelect(heroSameYear)">
-    <span class="badge">{{heroSameYear.id}}</span> {{heroSameYear.name}}
-      {{heroSameYear.birthday ? '(' : ''}}{{heroSameYear.birthday | date:"yyyy"}}{{heroSameYear.birthday ? ')' : ''}}
+    <span class="badge">{{heroSameYear.id}}</span> {{heroSameYear.name}} {{heroSameYear.birthday ? '(' : ''}}{{heroSameYear.birthday
+    | date:"yyyy"}}{{heroSameYear.birthday ? ')' : ''}}
   </li>
 </ul>
+<button (click)="addHero()">Add New Hero</button>
+<div *ngIf="addingHero">
+  <my-hero-detail (close)="close($event)"></my-hero-detail>
+</div>

@@ -8,5 +8,7 @@
   </div>
   <div *ngIf="hero.birthday">
     <label>Birthday: </label>{{hero.birthday|date:"dd/MM/yyyy"}}</div>
+  <button class="delete-button" (click)="deleteHero(hero, $event)">Delete</button>
   <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
 </div>
