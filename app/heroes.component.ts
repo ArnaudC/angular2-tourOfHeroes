@@ -39,20 +39,20 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  // addHero() {
-  //   let newHero = this.heroService
-  //     .save(new Hero())
-  //     .then(hero => this.heroes.push(hero));
-  // }
-
   addHero() {
-    this.addingHero = true;
-    this.selectedHero = null;
+    let newHero = this.heroService
+      .save(new Hero())
+      .then(hero => this.heroes.push(hero));
   }
 
+  // addHero() {
+    // this.addingHero = true;
+    // this.selectedHero = null;
+  // }
+
   close(savedHero: Hero) {
-    this.addingHero = false;
-    if (savedHero) { this.getHeroes(); }
+    // this.addingHero = false;
+    // if (savedHero) { this.getHeroes(); }
   }
 
   deleteHero(hero, $event) {
